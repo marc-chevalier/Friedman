@@ -1,0 +1,218 @@
+\begin{enumerate}[(i)]
+    \item 
+    $$
+        \infer{
+            \vdash (A\vee \neg A)^{\neg_\R}
+        }{
+            \infer{
+                \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \R
+            }{
+                \infer{
+                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash (A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \Rightarrow \R
+                }{
+                }&
+                \infer{
+                    (\H) : \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash A^{\neg_\R}\vee \neg_\R A^{\neg_\R}
+                }{
+                }
+            }
+        }
+    $$
+    We proof $\H$ by induction on $A$.
+    
+    \begin{itemize}
+        \item $A=\bottom$
+            $$
+                \infer{
+                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \R \vee \neg_\R \R
+                }{
+                    \infer{
+                        \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \neg_\R \R
+                    }{
+                        \infer{
+                            \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}), \R \vdash \R
+                        }{
+                        }
+                    }
+                }
+            $$
+        \item $A=\top$
+            $$
+                \infer{
+                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \top \vee \neg_\R\top
+                }{
+                    \infer{
+                        \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \top
+                    }{
+                    }
+                }
+            $$
+        \item $A=(a\dot{=}b)$
+            $$
+                \infer{
+                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \neg_\R\neg_\R(a\dot{=}b) \vee \neg_\R\neg_\R\neg_\R (a\dot{=}b)
+                }{
+                    \infer{
+                        \R, \neg_\R(a\dot{=}b) \vdash \R
+                    }{
+                    }
+                }
+            $$
+        \item $A=B\wedge C$
+            $$
+                \infer{
+                    \R \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                }{
+                    \infer{
+                        \R \vdash B^{\neg_\R}
+                    }{
+                        IH
+                    }&
+                    \infer{
+                        \R \vdash C^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=B \Rightarrow C$
+            $$
+                \infer{
+                    \R \vdash B^{\neg_\R} \Rightarrow C^{\neg_\R}
+                }{
+                    \infer{
+                        \R, B^{\neg_\R} \vdash C^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=B \vee C$
+            $$
+                \infer{
+                    \R \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                }{
+                    \infer{
+                        \R, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                    }{
+                    }
+                }
+            $$
+        \item $A=\forall x B$
+            $$
+                \infer{
+                    \R \vdash \forall x B^{\neg_\R}
+                }{
+                    \infer{
+                        \R \vdash B^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=\exists x B$
+            $$
+                \infer{
+                    \R \vdash \neg_\R\neg_\R(\exists x B^{\neg_\R})
+                }{
+                    \infer{
+                        \R, \neg_\R(\exists x B^{\neg_\R}) \vdash \R
+                    }{
+                    }
+                }
+            $$
+    \end{itemize}
+
+    \item We proof this property by induction on $A$ and we denote by $IH$ the induction hypothesis.
+    \begin{itemize}
+        \item $A=\bottom$
+            $$
+                \infer{
+                    \R \vdash \R
+                }{
+                }
+            $$
+        \item $A=\top$
+            $$
+                \infer{
+                    \R \vdash \top
+                }{
+                }
+            $$
+        \item $A=(a\dot{=}b)$
+            $$
+                \infer{
+                    \R \vdash (a\dot{=}b)^{\neg_\R}
+                }{
+                    \infer{
+                        \R, \neg_\R(a\dot{=}b) \vdash \R
+                    }{
+                    }
+                }
+            $$
+        \item $A=B\wedge C$
+            $$
+                \infer{
+                    \R \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                }{
+                    \infer{
+                        \R \vdash B^{\neg_\R}
+                    }{
+                        IH
+                    }&
+                    \infer{
+                        \R \vdash C^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=B \Rightarrow C$
+            $$
+                \infer{
+                    \R \vdash B^{\neg_\R} \Rightarrow C^{\neg_\R}
+                }{
+                    \infer{
+                        \R, B^{\neg_\R} \vdash C^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=B \vee C$
+            $$
+                \infer{
+                    \R \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                }{
+                    \infer{
+                        \R, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                    }{
+                    }
+                }
+            $$
+        \item $A=\forall x B$
+            $$
+                \infer{
+                    \R \vdash \forall x B^{\neg_\R}
+                }{
+                    \infer{
+                        \R \vdash B^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=\exists x B$
+            $$
+                \infer{
+                    \R \vdash \neg_\R\neg_\R(\exists x B^{\neg_\R})
+                }{
+                    \infer{
+                        \R, \neg_\R(\exists x B^{\neg_\R}) \vdash \R
+                    }{
+                    }
+                }
+            $$
+    \end{itemize}
+    So, $\R\vdash A$
+\end{enumerate}

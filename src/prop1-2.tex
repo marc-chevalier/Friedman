@@ -1,0 +1,186 @@
+    \begin{enumerate}[(i)]
+        \item 
+            $$
+                \infer{
+                    B \Rightarrow \neg_\R A \vdash A \Rightarrow \neg_\R B
+                }{
+                    \infer{
+                        B \Rightarrow \neg_\R A, A \vdash \neg_\R B
+                    }{
+                        \infer{
+                            B \Rightarrow \neg_\R A, A, B \vdash \R
+                        }{
+                            \infer{
+                                B \Rightarrow \neg_\R A, A, B \vdash A
+                            }{
+                            }&
+                            \infer{
+                                B \Rightarrow \neg_\R A, A, B \vdash A\Rightarrow \R
+                            }{
+                                \infer{
+                                    B \Rightarrow \neg_\R A, A, B \vdash B
+                                }{
+                                }&
+                                \infer{
+                                    B \Rightarrow \neg_\R A, A, B \vdash B \Rightarrow A \Rightarrow R
+                                }{
+                                }
+                            }
+                        }
+                    }
+                }
+            $$
+            
+        \item 
+            $$
+                \infer{
+                    A\vdash \neg_\R\neg_\R A
+                }{
+                    \infer{
+                        A, \neg_\R A \vdash \R
+                    }{
+                        \infer{
+                            A, \neg_\R A \vdash A\Rightarrow \R
+                        }{
+                        }&
+                        \infer{
+                            A, \neg_\R A \vdash A
+                        }{
+                        }
+                    }
+                }
+            $$
+        \item
+            $$
+                \infer{
+                    A\Rightarrow B \vdash \neg_\R B \Rightarrow \neg_\R A
+                }{
+                    \infer{
+                        A\Rightarrow B, \neg_\R B \vdash \neg_\R A
+                    }{
+                        \infer{
+                            A\Rightarrow B, \neg_\R B,A \vdash \R
+                        }{
+                            \infer{
+                                A\Rightarrow B, \neg_\R B,A \vdash B\Rightarrow \R
+                            }{
+                            }&
+                            \infer{
+                                A\Rightarrow B, \neg_\R B,A \vdash B
+                            }{
+                                \infer{
+                                    A\Rightarrow B, \neg_\R B,A \vdash A\Rightarrow B
+                                }{
+                                }&
+                                \infer{
+                                    A\Rightarrow B, \neg_\R B,A \vdash A
+                                }{
+                                }
+                            }
+                        }
+                    }
+                }
+            $$
+        \item
+            $$
+                \infer{
+                                        (\Pi_0) : A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B
+                                    }{
+                                        \infer{
+                                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash A\Rightarrow B
+                                        }{
+                                        }&
+                                        \infer{
+                                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash A
+                                        }{
+                                        }
+                                    }
+            $$
+
+            \bigskip            
+            
+            $$
+                \infer{
+                                (\Pi_1) : A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R
+                            }{
+                                \infer{
+                                    A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash \R
+                                }{
+                                    \infer{
+                                        A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B \Rightarrow \R
+                                    }{
+                                    }&
+                                    \infer{
+                                        A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B
+                                    }{
+                                        \Pi_0
+                                    }
+                                }
+                            }
+            $$
+            
+            \bigskip
+            
+            $$
+                \infer{
+                    A\Rightarrow B \vdash \neg_\R\neg_\R A \Rightarrow \neg_\R \neg_\R B
+                }{
+                    \infer{
+                        A\Rightarrow B, \neg_\R\neg_\R A \vdash \neg_\R \neg_\R B
+                    }{
+                        \infer{
+                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash \R 
+                        }{
+                            \infer{
+                                A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R \Rightarrow \R 
+                            }{
+                            }&
+                            \infer{
+                                A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R
+                            }{
+                                \Pi_1
+                            }
+                        }
+                    }
+                }
+            $$
+        \item
+            $$
+                            \infer{
+                                (\Pi_2) : \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash \R
+                            }{
+                                \infer{
+                                    \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash A\Rightarrow\R
+                                }{
+                                }&
+                                \infer{
+                                    \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash A
+                                }{
+                                }
+                            }
+            $$        
+        
+            $$
+                \infer{
+                    \neg_\R \neg_\R \neg_\R A \vdash \neg_\R A
+                }{
+                    \infer{
+                        \neg_\R \neg_\R \neg_\R A, A \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R \neg_\R \neg_\R A, A \vdash A\Rightarrow\R\Rightarrow\R\Rightarrow\R
+                        }{
+                        }&
+                        \infer{
+                            \neg_\R \neg_\R \neg_\R A, A \vdash A\Rightarrow\R\Rightarrow\R
+                        }{
+                            \infer{
+                                \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash \R
+                            }{
+                                \Pi_2
+                            }
+                        }
+                    }
+                }
+            $$
+    \end{enumerate}

@@ -1,0 +1,66 @@
+\input{macros.tex}
+
+\author{
+    Marc \textsc{Chevalier}\\
+    Thomas \textsc{Pellissier} \textsc{Tanon}}
+\date{\today}
+\title{\textsc{Friedman}'s translation}
+
+\begin{document}
+
+\maketitle
+
+\section{\textsc{Friedman}'s Translation}
+
+\begin{definition}
+    Let $\R$ be a formula. The \textbf{parametrized negation} is 
+    $$
+        \neg_\R := A \Rightarrow \R
+    $$
+\end{definition}
+
+We gather here some basic properties of the parametrized negation
+
+\begin{proposition}
+    In intuitionisctic logic,
+    \begin{enumerate}[(i)]
+        \item $B \Rightarrow \neg_\R A \vdash A \Rightarrow \neg_\R B$
+        \item $A\vdash \neg_\R\neg_\R A$
+        \item $A\Rightarrow B \vdash \neg_\R B \Rightarrow \neg_\R A$
+        \item $A\Rightarrow B \vdash \neg_\R\neg_\R A \Rightarrow \neg_\R \neg_\R B$
+        \item $\neg_\R \neg_\R \neg_\R A \vdash \neg_\R A$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \input{src/prop1-2.tex}
+\end{proof}
+
+We now define the parametrized translation.
+\begin{definition}
+    Let $\R$ be a formula. The \textbf{parametrized negative translation} $A^{\neg_\R}$ is defined by induction on $A$ as follows:
+    \begin{center}
+    \begin{tabular}{cccc}
+        $\bottom^{\neg_\R} := \R$ & $\top^{\neg_\R} := \top$ & \multicolumn{2}{c}{$(a\dot{=}b)^{\neg_\R} := \neg_\R\neg_\R(a\dot{=}b)$}\\
+        \multicolumn{2}{c}{$(A\wedge B)^{\neg_R}:=A^{\neg_\R} \wedge B^{\neg_\R}$} & \multicolumn{2}{c}{$(A \Rightarrow B)^{\neg_R}:=A^{\neg_\R} \Rightarrow B^{\neg_\R}$}\\
+        \multicolumn{4}{c}{$(A \vee B)^{\neg_R}:=\neg_\R\neg_\R(A^{\neg_\R} \vee B^{\neg_\R})$}\\
+        \multicolumn{2}{c}{$\forall x A)^{\neg_\R} := \forall x A^{\neg_\R}$} & \multicolumn{2}{c}{$\exists x A^{\neg_\R} := \neg_\R\neg_\R(\exists x A^{\neg_\R})$}
+    \end{tabular}
+    \end{center}
+\end{definition}
+
+Note that $(\neg A)^{\neg_\R} = \neg_\R A^{\neg_\R}$. We gather here the basic properties of the parametrized translation.
+
+\begin{proposition}
+    In intuitionistic logic,
+    \begin{enumerate}[(i)]
+        \item $\vdash (A\vee \neg A)^{\neg_\R}$
+        \item $\R \vdash A^{\neg_\R}$
+        \item $\neg_\R\neg_\R A^{\neg_\R} \vdash A^{\neg_\R}$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \input{src/prop1-4.tex}
+\end{proof}
+
+
+\end{document}
