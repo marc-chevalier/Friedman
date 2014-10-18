@@ -215,4 +215,87 @@
             $$
     \end{itemize}
     So, $\R\vdash A$
+    
+     \item We proof this property by induction on $A$ and we denote by $IH$ the induction hypothesis.
+    \begin{itemize}
+        \item $A=\bottom$
+            $$
+                \infer{
+                   \ngr\ngr\R \vdash \R
+                }{
+                    \infer{
+                        \ngr\ngr\R \vdash \R \rightarrow \R
+                    }{
+                        \infer{
+                        \ngr\ngr\R, R \vdash \R
+                        }{}
+                    }
+                }
+            $$
+        \item $A=\top$
+            $$
+                \infer{
+                     \ngr\ngr\top \vdash \top
+                }{}
+            $$
+        \item $A=(a\dot{=}b)$
+            $$
+                \infer{
+                     \ngr\ngr(a\dot{=}b)^\ngr \vdash (a\dot{=}b)^\ngr
+                }{
+                    %TODO
+                }
+            $$
+        \item $A=B\wedge C$
+            $$
+                \infer{
+                    \ngr\ngr(B\wedge C)^\ngr \vdash (B\wedge C)^\ngr
+                }{
+                    %TODO
+                }
+            $$
+        \item $A=B \Rightarrow C$
+            $$
+                \infer{
+                    \ngr\ngr(B \Rightarrow C)^\ngr \vdash (B \Rightarrow C)^\ngr
+                }{
+                    %TODO
+                }
+            $$
+        \item $A=B \vee C$
+            $$
+                \infer{
+                    \ngr\ngr(B \vee C)^\ngr \vdash (B \vee C)^\ngr
+                }{
+                    \infer{
+                        \ngr\ngr\ngr(\ngr(B^\ngr \vee C^\ngr)) \vdash \ngr(\ngr(B^\ngr \vee C^\ngr))
+                    }{
+                    }
+                }
+            $$
+        \item $A=\forall x B$
+            $$
+                \infer{
+                    \ngr\ngr(\forall x B)^\ngr \vdash (\forall x B)^\ngr
+                }{
+                    \infer{
+                        \ngr\ngr B^\ngr \vdash B^\ngr
+                    }{
+                       IH
+                    }
+                }
+            $$
+        \item $A=\exists x B$
+            $$
+                \infer{
+                    \ngr\ngr(\exists x B)^\ngr \vdash (\exists x B)^\ngr
+                }{
+                    \infer{
+                        \ngr\ngr\ngr(\ngr(\exists x B^\ngr)) \vdash \ngr(\ngr(\exists x B^\ngr))
+                    }{
+                    }
+                }
+            $$
+    \end{itemize}
+    So, $\ngr\ngr A^\ngr \vdash A^\ngr$
 \end{enumerate}
