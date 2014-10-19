@@ -1,125 +1,418 @@
 \begin{enumerate}[(i)]
-    \item 
+    \item We proof this property by induction.
+    We will use intensively these lemmas:
     $$
+    \infer{
+        (\Psi_1) : \neg A \vdash \neg_\R A
+    }{
         \infer{
-            \vdash (A\vee \neg A)^{\neg_\R}
+            \neg A, A \vdash \R
         }{
             \infer{
-                \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \R
+                \neg A, A \vdash \bot
             }{
                 \infer{
-                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash (A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \Rightarrow \R
+                    \neg A, A \vdash \neg A
                 }{
                 }&
                 \infer{
-                    (\H) : \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash A^{\neg_\R}\vee \neg_\R A^{\neg_\R}
+                    \neg A, A \vdash A
                 }{
                 }
             }
         }
+    }
     $$
-    We proof $\H$ by induction on $A$.
+    
+    $$
+    \infer{
+        (\Psi_2) : A \vdash \neg_\R \neg_\R A
+    }{
+        \infer{
+            A, \neg_\R A \vdash \R
+        }{
+            \infer{
+                A, \neg_\R A \vdash A\Rightarrow \R
+            }{
+            }&
+            \infer{
+                A, \neg_\R A \vdash A
+            }{
+            }
+        }
+    }
+    $$
+    
+    $$
+    \infer{
+        (\Psi_3) :\: \vdash \neg_\R \neg_\R A
+    }{
+        \infer{
+             \neg_\R A \vdash \R
+        }{
+            \infer{
+                 \neg_\R A \vdash A\Rightarrow \R
+            }{
+            }&
+            \neg_\R A \vdash A
+        }
+    }
+    $$
+    
+    We will often use this last one with the weakening
     
     \begin{itemize}
-        \item $A=\bottom$
+        \item $A = \top$.
             $$
+            \infer{
+                \vdash (\top \vee \neg \top)^{\neg_\R}
+            }{
                 \infer{
-                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \R \vee \neg_\R \R
+                    \vdash (\neg_\R \top) \vee (\neg_\R \bot)
                 }{
                     \infer{
-                        \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \neg_\R \R
+                        \vdash (\neg_\R \bot)
                     }{
                         \infer{
-                            \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}), \R \vdash \R
+                            \bot \vdash \R
                         }{
+                            \infer{
+                                \bot \vdash \bot
+                            }{
+                            }
+                        }
+                    }
+                }
+            }
+            $$
+        \item $A = \bot$.
+            $$
+            \infer{
+                \vdash (\bot \vee \neg \bot)^{\neg_\R}
+            }{
+                \infer{
+                    \vdash (\bot \Rightarrow \R) \vee (\neg_\R \top)
+                }{
+                    \infer{
+                        \vdash (\neg_\R \bot)
+                    }{
+                        \infer{
+                            \bot \vdash \R
+                        }{
+                            \infer{\bot \vdash \bot}{}
+                        }
+                    }
+                }
+            }
+            $$
+
+        \item $A = (a \dot{=} b)$.
+
+            $$
+            \infer{
+                (\Pi_3) :\:\vdash (a \dot{=} b) \vee (\neg_\R(a \dot{=} b))
+            }{
+                \infer{
+                    \vdash (a \dot{=} b) \vee (\neg(a \dot{=} b))
+                }{
+                    \text{decidability of QF formulas}
+                }
+                &
+                \infer{
+                    (a \dot{=} b) \vdash (a \dot{=} b)
+                }{
+                }
+                &
+                \infer{
+                    \neg(a \dot{=} b) \vdash \neg_\R(a \dot{=} b)
+                }{
+                    \Psi_1
+                }
+            }
+            $$
+
+            $$
+            \infer{
+                \vdash ((a \dot{=} b) \vee \neg(a \dot{=} b))^{\neg_\R}
+            }{
+                \infer{
+                    \vdash \neg_\R\neg_\R(a \dot{=} b) \vee (\neg_\R\neg_\R\neg_\R(a \dot{=} b))
+                }{
+                    \infer{
+                        (a \dot{=} b) \vdash \neg_\R\neg_\R(a \dot{=} b) \vee (\neg_\R\neg_\R\neg_\R(a \dot{=} b))
+                    }{
+                        \infer{
+                            (a \dot{=} b) \vdash \neg_\R\neg_\R(a \dot{=} b)
+                        }{
+                            \Psi_2
+                        }
+                    }&
+                    \infer{
+                        \neg_\R(a \dot{=} b) \vdash \neg_\R\neg_\R(a \dot{=} b) \vee (\neg_\R\neg_\R\neg_\R(a \dot{=} b))
+                    }{
+                        \infer{
+                            \neg_\R(a \dot{=} b) \vdash \neg_\R\neg_\R\neg_\R(a \dot{=} b)
+                        }{
+                            \Psi_2
+                        }
+                    }&
+                    \Pi_3
+                }
+            }
+            $$
+        \item $A = B \vee C$
+        
+            $IH_B : \; \vdash (B \vee \neg B)^{\neg_\R}$
+            
+            $IH_C : \; \vdash (C \vee \neg C)^{\neg_\R}$
+
+            $$
+            \infer{
+                (\Pi_6) : {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, (B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+            }{
+                    \infer{B^{\neg_\R} \vee C^{\neg_\R} \vdash B^{\neg_\R} \vee C^{\neg_\R}
+                }{
+                }&
+                \infer{
+                    {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, B^{\neg_\R} \vdash \R
+                }{
+                    \infer{
+                        {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, B^{\neg_\R} \vdash B^{\neg_\R}
+                    }{
+                    }
+                }&
+                \infer{
+                    {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, C^{\neg_\R} \vdash \R
+                }{
+                    \infer{
+                        {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, C^{\neg_\R} \vdash C^{\neg_\R}
+                    }{
+                    }
+                }
+            }
+            $$
+            
+            $$
+                \infer{
+                    (\Pi_7) : {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
+                }{
+                    \infer{
+                        {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R} \vdash {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
+                    }{
+                        \infer{
+                            {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, {\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                        }{
+                            \infer{
+                                {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R} \vdash {\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
+                            }{
+                                \infer{
+                                    {\neg_\R} B^{\neg_\R}, {\neg_\R} C^{\neg_\R}, (B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                                }{
+                                    \Pi_6
+                                }
+                            }
                         }
                     }
                 }
             $$
-        \item $A=\top$
+
             $$
+            \infer{
+                (\Pi_8) : {\neg_\R} B^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
+            }{
                 \infer{
-                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \top \vee \neg_\R\top
+                    \vdash (C \vee {\neg_\R} C)
                 }{
-                    \infer{
-                        \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \top
+                        \infer{\vdash (C \vee \neg C)^{\neg_\R}
                     }{
                     }
-                }
-            $$
-        \item $A=(a\dot{=}b)$
-            $$
+                }&
                 \infer{
-                    \neg_\R(A^{\neg_\R}\vee (\neg A)^{\neg_\R}) \vdash \neg_\R\neg_\R(a\dot{=}b) \vee \neg_\R\neg_\R\neg_\R (a\dot{=}b)
+                    {\neg_\R} B^{\neg_\R}, C^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R}
                 }{
                     \infer{
-                        \R, \neg_\R(a\dot{=}b) \vdash \R
+                        {\neg_\R} B^{\neg_\R}, C^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R})
                     }{
+                        \infer
+                        {
+                            \Psi_3
+                        }{
+                            \infer{
+                                {\neg_\R} B^{\neg_\R}, C^{\neg_\R}, {\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R})\vdash (B^{\neg_\R} \vee C^{\neg_\R})
+                            }{
+                                \infer{
+                                    {\neg_\R} B^{\neg_\R}, C^{\neg_\R}, {\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R})\vdash C^{\neg_\R})
+                                }{
+                                }
+                            }
+                        }
                     }
-                }
+                }&
+                \Pi_7
+            }
             $$
-        \item $A=B\wedge C$
+            
             $$
+                    \infer{
+                        (\Pi_9) : {\neg_\R} B^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
+                    }{
+                        \Pi_8
+                    }
+            $$
+
+            $$
+            \infer{
+                \vdash (B \vee C)^{\neg_\R} \vee ({\neg_\R} (B \vee C)^{\neg_\R})
+            }{
                 \infer{
-                    \R \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                    \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
                 }{
                     \infer{
-                        \R \vdash B^{\neg_\R}
+                        \vdash B^{\neg_\R} \vee \neg B^{\neg_\R}
                     }{
-                        IH
+                        \infer{
+                            \vdash (B \vee {\neg_\R} B)^{\neg_\R}
+                        }{
+                        }
                     }&
                     \infer{
-                        \R \vdash C^{\neg_\R}
+                        B^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vee {\neg_\R}{\neg_\R}{\neg_\R} (B^{\neg_\R} \vee C^{\neg_\R})
                     }{
-                        IH
-                    }
+                        \infer{
+                            B^{\neg_\R} \vdash {\neg_\R}{\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R})
+                        }{
+                            \infer{
+                                \Psi_3
+                            }{
+                                \infer{
+                                    B^{\neg_\R}, {\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vdash B^{\neg_\R} \vee C^{\neg_\R}
+                                }{
+                                    \infer{
+                                        B^{\neg_\R}, {\neg_\R}(B^{\neg_\R} \vee C^{\neg_\R}) \vdash B^{\neg_\R}
+                                    }{
+                                    }
+                                }
+                            }
+                        }
+                    }&
+                    \Pi_9
                 }
+            }
             $$
-        \item $A=B \Rightarrow C$
+
+        \item $A = B \wedge C$
+        
+            $(IH_B) : \; \vdash (B \vee \neg B)^{\neg_\R}$
+            
+            $(IH_C) : \; \vdash (C \vee \neg C)^{\neg_\R}$
+
+
             $$
                 \infer{
-                    \R \vdash B^{\neg_\R} \Rightarrow C^{\neg_\R}
+                    (\Pi_4) : B^{\neg_\R}, \neg_\R C^{\neg_\R} \vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee \neg_\R(B^{\neg_\R} \wedge C^{\neg_\R})
                 }{
                     \infer{
-                        \R, B^{\neg_\R} \vdash C^{\neg_\R}
+                        B^{\neg_\R}, \neg C^{\neg_\R} \vdash \neg_\R(B^{\neg_\R} \wedge C^{\neg_\R})
                     }{
-                        IH
+                        \infer{
+                            B^{\neg_\R}, \neg C^{\neg_\R}, B^{\neg_\R} \wedge C^{\neg_\R} \vdash R
+                        }{
+                            \infer{
+                                B^{\neg_\R}, B^{\neg_\R} \wedge C^{\neg_\R} \vdash C^{\neg_\R}
+                            }{
+                                \infer{
+                                    B^{\neg_\R}, B^{\neg_\R} \wedge C^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                                }{
+                                }
+                            }
+                        }
                     }
                 }
             $$
-        \item $A=B \vee C$
+
+
             $$
+            \infer{
+                \Pi_5 : B^{\neg_\R} \vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee \neg_\R(B^{\neg_\R} \wedge C^{\neg_\R})
+            }{
                 \infer{
-                    \R \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                    \vdash (C^{\neg_\R} \vee \neg_\R C^{\neg_\R})
                 }{
                     \infer{
-                        \R, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                        \vdash (C \vee \neg C)^{\neg_\R}
                     }{
+                        IH_C
                     }
-                }
-            $$
-        \item $A=\forall x B$
-            $$
+                }&
                 \infer{
-                    \R \vdash \forall x B^{\neg_\R}
+                    B^{\neg_\R}, C^{\neg_\R} \vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee \neg_\R(B^{\neg_\R} \wedge C^{\neg_\R})
                 }{
                     \infer{
-                        \R \vdash B^{\neg_\R}
+                        B^{\neg_\R}, C^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
                     }{
-                        IH
+                        \infer{
+                            B^{\neg_\R}, C^{\neg_\R} \vdash B^{\neg_\R}
+                        }{
+                        }&
+                        \infer{
+                            B^{\neg_\R}, C^{\neg_\R} \vdash C^{\neg_\R}
+                        }{
+                        }
                     }
-                }
+                }&
+                \Pi_4
+            }
             $$
-        \item $A=\exists x B$
+
             $$
-                \infer{
-                    \R \vdash \neg_\R\neg_\R(\exists x B^{\neg_\R})
+            \infer{
+                \vdash ((B \wedge C) \vee \neg(B \wedge C))^{\neg_\R}
+            }{\infer{\Psi_3}{
+                    \infer{\vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee {\neg_\R}(B^{\neg_\R} \wedge C^{\neg_\R})
                 }{
-                    \infer{
-                        \R, \neg_\R(\exists x B^{\neg_\R}) \vdash \R
+                        \infer{\vdash B^{\neg_\R} \vee {\neg_\R} B^{\neg_\R}
                     }{
+                            \infer{\vdash (B \vee \neg B)^{\neg_\R}
+                        }{
+                            IH_B
+                        }
+                    }
+                    &
+                        \infer{B^{\neg_\R} \vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee {\neg_\R}(B^{\neg_\R} \wedge C^{\neg_\R})
+                    }{
+                        \Pi_5
+                    }
+                    &
+                    \infer{
+                        \neg B^{\neg_\R} \vdash (B^{\neg_\R} \wedge C^{\neg_\R}) \vee {\neg_\R}(B^{\neg_\R} \wedge C^{\neg_\R})
+                    }{
+                        \infer{
+                            \neg B^{\neg_\R} \vdash {\neg_\R}(B^{\neg_\R} \wedge C^{\neg_\R})
+                        }{
+                            \infer{
+                                \neg B^{\neg_\R}, B^{\neg_\R} \wedge C^{\neg_\R} \vdash \R
+                            }{
+                                \infer{
+                                    B^{\neg_\R} \wedge C^{\neg_\R} \vdash B^{\neg_\R}
+                                }{
+                                    \infer{
+                                        B^{\neg_\R} \wedge C^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                                    }{
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+            }}
+            $$
+        \item $A = B \Rightarrow C$
+        
+            $(IH_B) : \; \vdash (B \vee \neg B)^{\neg_\R}$
+            
+            $(IH_C) : \; \vdash (C \vee \neg C)^{\neg_\R}$
+            
+            $$
             $$
     \end{itemize}
 
@@ -139,13 +432,13 @@
                 }{
                 }
             $$
-        \item $A=(a\dot{=}b)$
+        \item $A=(a \dot{=} b)$
             $$
                 \infer{
-                    \R \vdash (a\dot{=}b)^{\neg_\R}
+                    \R \vdash (a \dot{=} b)^{\neg_\R}
                 }{
                     \infer{
-                        \R, \neg_\R(a\dot{=}b) \vdash \R
+                        \R, \neg_\R(a \dot{=} b) \vdash \R
                     }{
                     }
                 }
@@ -214,5 +507,337 @@
                 }
             $$
     \end{itemize}
-    So, $\R\vdash A$
+    So, $\R\vdash A^{\neg_\R}$
+    
+    \item We proof this property by induction on $A$ and we denote by $IH$ the induction hypothesis.
+    \begin{itemize}
+        \item $A=\bottom$
+            $$
+                \infer{
+                    \neg_\R\neg_\R \bottom^{\neg_\R} \vdash \bottom^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R \R \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R \R \vdash \R\Rightarrow\R\Rightarrow\R
+                        }{
+                        }&
+                        \infer{
+                            \neg_\R\neg_\R \R \vdash \R\Rightarrow\R
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R \R, \R \vdash \R
+                            }{
+                            }
+                        }
+                    }
+                }
+            $$
+        \item $A=\top$
+            $$
+                \infer{
+                    \neg_\R\neg_\R \top^{\neg_\R} \vdash \top^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R \top^{\neg_\R} \vdash \top
+                    }{
+                    }
+                }
+            $$
+        \item $A=(a \dot{=} b)$
+            $$
+            \infer{
+                                (\Theta_1) : \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R}, \neg_\R(a \dot{=} b), \neg_\R \neg_\R (a \dot{=} b) \vdash \R
+                            }{
+                                \infer{
+                                    \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R}, \neg_\R(a \dot{=} b), \neg_\R \neg_\R (a \dot{=} b) \vdash \neg_\R \neg_\R (a \dot{=} b)
+                                }{
+                                }&
+                                \infer{
+                                    \neg_\R(a \dot{=} b), \neg_\R \neg_\R (a \dot{=} b) \vdash \neg_\R (a \dot{=} b)
+                                }{
+                                }
+                            }
+            $$
+            
+            $$
+                \infer{
+                    \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R} \vdash (a \dot{=} b)^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R}, \neg_\R(a \dot{=} b) \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R}, \neg_\R(a \dot{=} b) \vdash \neg_\R \neg_\R \neg_\R \neg_\R (a \dot{=} b)
+                        }{
+                        }&
+                        \infer{
+                            \neg_\R \neg_\R (a \dot{=} b)^{\neg_\R}, \neg_\R(a \dot{=} b) \vdash \neg_\R \neg_\R \neg_\R (a \dot{=} b)
+                        }{
+                            \Theta_1
+                        }
+                    }
+                }
+            $$
+        \item $A=B\wedge C$
+        
+            $$
+            \infer{
+                            (\Theta_2) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R} \vdash \neg_\R(B \wedge C)^{\neg_\R}
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash \R
+                            }{
+                                \infer{
+                                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash \neg_\R B^{\neg_\R}
+                                }{
+                                }&
+                                \infer{
+                                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash B^{\neg_\R}
+                                }{
+                                    \infer{
+                                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                                    }{
+                                    }
+                                }
+                            }
+                        }
+            $$        
+        
+            $$
+            \infer{
+                    (\Theta_3) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash \neg_\R\neg_\R B^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R} \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R B^{\neg_\R} \vdash \neg_\R\neg_\R(B \wedge C)^{\neg_\R}
+                        }{
+                        }&
+                        \Theta_2
+                    }
+                }
+            $$        
+        
+            $$
+            \infer{
+                (\Theta_4) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash B^{\neg_\R}
+            }{
+                \Theta_3
+                &
+                \infer{
+                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash \neg_\R\neg_\R B^{\neg_\R} \Rightarrow  B^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R\neg_\R B^{\neg_\R} \vdash  B^{\neg_\R}
+                    }{
+                        IH_B
+                    }
+                }
+            }
+            $$
+            
+            $$
+            \infer{
+                            (\Theta_5) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R} \vdash \neg_\R(B \wedge C)^{\neg_\R}
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash \R
+                            }{
+                                \infer{
+                                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash \neg_\R C^{\neg_\R}
+                                }{
+                                }&
+                                \infer{
+                                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash C^{\neg_\R}
+                                }{
+                                    \infer{
+                                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R}, (B \wedge C)^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                                    }{
+                                    }
+                                }
+                            }
+                        }
+            $$        
+        
+            $$
+            \infer{
+                    (\Theta_6) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash \neg_\R\neg_\R C^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R} \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R C^{\neg_\R} \vdash \neg_\R\neg_\R(B \wedge C)^{\neg_\R}
+                        }{
+                        }&
+                        \Theta_5
+                    }
+                }
+            $$        
+        
+            $$
+            \infer{
+                (\Theta_7) : \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash C^{\neg_\R}
+            }{
+                \Theta_6
+                &
+                \infer{
+                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash \neg_\R\neg_\R C^{\neg_\R} \Rightarrow  C^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R}, \neg_\R\neg_\R C^{\neg_\R} \vdash  C^{\neg_\R}
+                    }{
+                        IH_C
+                    }
+                }
+            }
+            $$
+            
+            $$
+                \infer{
+                    \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash (B \wedge C)^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \wedge C)^{\neg_\R} \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                    }{
+                        \Theta_4
+                        &
+                        \Theta_7
+                    }
+                }
+            $$
+        \item $A=B \Rightarrow C$
+            $$
+                \infer{
+                    \neg_\R\neg_\R (B \Rightarrow C)^{\neg_\R} \vdash (B \Rightarrow C)^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R (B \Rightarrow C)^{\neg_\R} \vdash B^{\neg_\R} \Rightarrow C^{\neg_\R}
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R (B \Rightarrow C)^{\neg_\R}, B^{\neg_\R} \vdash C^{\neg_\R}
+                        }{
+                            todo
+                        }
+                    }
+                }
+            $$
+        \item $A=B \vee C$
+            $$            
+                    \infer{
+                        (\Theta_8) : \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}), (B \vee C)^{\neg_\R} \vdash \neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}), (B \vee C)^{\neg_\R}, B^{\neg_\R} \vee C^{\neg_\R} \vdash \R
+                        }{
+                            \infer{
+                                \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                            }{
+                            }&
+                            \infer{
+                                B^{\neg_\R} \vee C^{\neg_\R} \vdash B^{\neg_\R} \vee C^{\neg_\R}
+                            }{
+                            }
+                        }
+                    }
+            $$
+            
+            $$
+            \infer{
+                (\Theta_9) : \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \neg_\R(B \vee C)^{\neg_\R}
+            }{
+                \infer{
+                    \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}), (B \vee C)^{\neg_\R} \vdash \R
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                    }{
+                    }&
+                    \Theta_8
+                }
+            }
+            $$
+        
+            $$
+                \infer{
+                    \neg_\R\neg_\R(B \vee C)^{\neg_\R} \vdash (B \vee C)^{\neg_\R}
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(B \vee C)^{\neg_\R} \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R(B \vee C)^{\neg_\R}, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \neg_\R\neg_\R(B \vee C)^{\neg_\R}
+                            }{
+                            }&
+                            \Theta_9
+                        }
+                    }
+                }
+            $$
+        \item $A=\forall x B$
+            $$
+                \infer{
+                    \neg_\R\neg_\R \forall x B^{\neg_\R} \vdash \forall x B^{\neg_\R}
+                }{
+                    \infer{
+                       \neg_\R\neg_\R \forall x B^{\neg_\R} \vdash B^{\neg_\R}
+                    }{
+                        IH
+                    }
+                }
+            $$
+        \item $A=\exists x B$
+            $$\infer{
+                            (\Theta_{10}) : \neg_\R\neg_\R(\exists x B)^{\neg_\R}, \neg_\R(\exists x B^{\neg_\R}) \vdash \neg_\R(\exists x B)^{\neg_\R}
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R(\exists x B)^{\neg_\R}, \neg_\R(\exists x B^{\neg_\R}), (\exists x B)^{\neg_\R} \vdash \R
+                            }{
+                                \infer{
+                                    (\exists x B)^{\neg_\R} \vdash \neg_\R\neg_\R\exists x B^{\neg_\R}
+                                }{
+                                }&
+                                \infer{
+                                    \neg_\R(\exists x B^{\neg_\R}), (\exists x B)^{\neg_\R} \vdash \neg_\R\exists x B^{\neg_\R}
+                                }{
+                                    \infer{
+                                        \neg_\R(\exists x B^{\neg_\R}), (\exists x B)^{\neg_\R}, \exists x B^{\neg_\R} \vdash \R
+                                    }{
+                                        \infer{
+                                            \neg_\R(\exists x B^{\neg_\R}) \vdash \neg_\R(\exists x B^{\neg_\R})
+                                        }{
+                                        }&
+                                        \infer{
+                                            \exists x B^{\neg_\R} \vdash \exists x B^{\neg_\R}
+                                        }{
+                                        }
+                                    }
+                                }
+                            }
+                        }
+            $$
+        
+            $$
+                \infer{
+                    \neg_\R\neg_\R(\exists x B)^{\neg_\R} \vdash \neg_\R\neg_\R(\exists x B^{\neg_\R})
+                }{
+                    \infer{
+                        \neg_\R\neg_\R(\exists x B)^{\neg_\R}, \neg_\R(\exists x B^{\neg_\R}) \vdash \R
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R(\exists x B)^{\neg_\R} \vdash \neg_\R\neg_\R(\exists x B)^{\neg_\R}
+                        }{
+                        }&
+                        \Theta_{10}
+                    }
+                }
+            $$
+    \end{itemize}
+    So, $\neg_\R\neg_\R A^{\neg_\R}\vdash A^{\neg_\R}$
 \end{enumerate}
