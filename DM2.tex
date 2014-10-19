@@ -62,5 +62,26 @@ Note that $(\neg A)^\ngr = \ngr A^\ngr$. We gather here the basic properties of 
     \input{src/prop1-4.tex}
 \end{proof}
 
+\begin{theoreme}
+    If $\vdash A$ is derivable in classical predicate logic and if no free variable of \R occurs in the derivation, then $\vdash A^{\neg_\R}$ is derivable in intuitionisctic predicate logic.
+\end{theoreme}
+\begin{proof}
+
+\end{proof}
+
+\begin{theoreme}
+    If $PA \vdash A$ and if no free variable of \R occurs in the derivation, then $HA \vdash A^{\neg_\R}$.
+\end{theoreme}
+\begin{proof}
+    \input{src/th1-6.tex}
+\end{proof}
+
+\begin{theoreme}
+    If $PA\vdash \forall x,\exists y:(a\dot{=}b)$ then $HA\vdash \forall x, \exists y: (a\dot{=}b)$.
+\end{theoreme}
+\begin{proof}
+    Let us write $F \forall x,G$ where $G$ is a $\Sigma_1^0$ formula. By using $(\forall E)$, if $F$ if provable with PA, so $G$ too. As $G$ is $\sigma_1^0$, $G$ is provable with $HA$. By using $(\forall I)$, we deduce that $F$ is provable with HA too.
+    %cf. http://www.lsv.ens-cachan.fr/~goubault/types005.html
+\end{proof}
 
 \end{document}
