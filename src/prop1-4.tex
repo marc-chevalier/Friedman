@@ -446,15 +446,15 @@
         \item $A=B\wedge C$
             $$
                 \infer{
-                    \R \vdash B^{\neg_\R} \wedge C^{\neg_\R}
+                    \R \vdash B^\ngr \wedge C^\ngr
                 }{
                     \infer{
-                        \R \vdash B^{\neg_\R}
+                        \R \vdash B^\ngr
                     }{
                         IH
                     }&
                     \infer{
-                        \R \vdash C^{\neg_\R}
+                        \R \vdash C^\ngr
                     }{
                         IH
                     }
@@ -463,10 +463,10 @@
         \item $A=B \Rightarrow C$
             $$
                 \infer{
-                    \R \vdash B^{\neg_\R} \Rightarrow C^{\neg_\R}
+                    \R \vdash B^\ngr \Rightarrow C^\ngr
                 }{
                     \infer{
-                        \R, B^{\neg_\R} \vdash C^{\neg_\R}
+                        \R, B^\ngr \vdash C^\ngr
                     }{
                         IH
                     }
@@ -475,10 +475,10 @@
         \item $A=B \vee C$
             $$
                 \infer{
-                    \R \vdash \neg_\R\neg_\R(B^{\neg_\R} \vee C^{\neg_\R})
+                    \R \vdash \ngr\ngr(B^\ngr \vee C^\ngr)
                 }{
                     \infer{
-                        \R, \neg_\R(B^{\neg_\R} \vee C^{\neg_\R}) \vdash \R
+                        \R, \ngr(B^\ngr \vee C^\ngr) \vdash \R
                     }{
                     }
                 }
@@ -486,10 +486,10 @@
         \item $A=\forall x B$
             $$
                 \infer{
-                    \R \vdash \forall x B^{\neg_\R}
+                    \R \vdash \forall x B^\ngr
                 }{
                     \infer{
-                        \R \vdash B^{\neg_\R}
+                        \R \vdash B^\ngr
                     }{
                         IH
                     }
@@ -498,10 +498,10 @@
         \item $A=\exists x B$
             $$
                 \infer{
-                    \R \vdash \neg_\R\neg_\R(\exists x B^{\neg_\R})
+                    \R \vdash \ngr\ngr(\exists x B^\ngr)
                 }{
                     \infer{
-                        \R, \neg_\R(\exists x B^{\neg_\R}) \vdash \R
+                        \R, \ngr(\exists x B^\ngr) \vdash \R
                     }{
                     }
                 }

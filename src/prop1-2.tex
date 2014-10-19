@@ -2,27 +2,27 @@
         \item 
             $$
                 \infer{
-                    B \Rightarrow \neg_\R A \vdash A \Rightarrow \neg_\R B
+                    B \Rightarrow \ngr A \vdash A \Rightarrow \ngr B
                 }{
                     \infer{
-                        B \Rightarrow \neg_\R A, A \vdash \neg_\R B
+                        B \Rightarrow \ngr A, A \vdash \ngr B
                     }{
                         \infer{
-                            B \Rightarrow \neg_\R A, A, B \vdash \R
+                            B \Rightarrow \ngr A, A, B \vdash \R
                         }{
                             \infer{
-                                B \Rightarrow \neg_\R A, A, B \vdash A
+                                B \Rightarrow \ngr A, A, B \vdash A
                             }{
                             }&
                             \infer{
-                                B \Rightarrow \neg_\R A, A, B \vdash A\Rightarrow \R
+                                B \Rightarrow \ngr A, A, B \vdash A\Rightarrow \R
                             }{
                                 \infer{
-                                    B \Rightarrow \neg_\R A, A, B \vdash B
+                                    B \Rightarrow \ngr A, A, B \vdash B
                                 }{
                                 }&
                                 \infer{
-                                    B \Rightarrow \neg_\R A, A, B \vdash B \Rightarrow A \Rightarrow R
+                                    B \Rightarrow \ngr A, A, B \vdash B \Rightarrow A \Rightarrow R
                                 }{
                                 }
                             }
@@ -34,17 +34,17 @@
         \item 
             $$
                 \infer{
-                    A\vdash \neg_\R\neg_\R A
+                    A\vdash \ngr\ngr A
                 }{
                     \infer{
-                        A, \neg_\R A \vdash \R
+                        A, \ngr A \vdash \R
                     }{
                         \infer{
-                            A, \neg_\R A \vdash A\Rightarrow \R
+                            A, \ngr A \vdash A\Rightarrow \R
                         }{
                         }&
                         \infer{
-                            A, \neg_\R A \vdash A
+                            A, \ngr A \vdash A
                         }{
                         }
                     }
@@ -53,27 +53,27 @@
         \item
             $$
                 \infer{
-                    A\Rightarrow B \vdash \neg_\R B \Rightarrow \neg_\R A
+                    A\Rightarrow B \vdash \ngr B \Rightarrow \ngr A
                 }{
                     \infer{
-                        A\Rightarrow B, \neg_\R B \vdash \neg_\R A
+                        A\Rightarrow B, \ngr B \vdash \ngr A
                     }{
                         \infer{
-                            A\Rightarrow B, \neg_\R B,A \vdash \R
+                            A\Rightarrow B, \ngr B,A \vdash \R
                         }{
                             \infer{
-                                A\Rightarrow B, \neg_\R B,A \vdash B\Rightarrow \R
+                                A\Rightarrow B, \ngr B,A \vdash B\Rightarrow \R
                             }{
                             }&
                             \infer{
-                                A\Rightarrow B, \neg_\R B,A \vdash B
+                                A\Rightarrow B, \ngr B,A \vdash B
                             }{
                                 \infer{
-                                    A\Rightarrow B, \neg_\R B,A \vdash A\Rightarrow B
+                                    A\Rightarrow B, \ngr B,A \vdash A\Rightarrow B
                                 }{
                                 }&
                                 \infer{
-                                    A\Rightarrow B, \neg_\R B,A \vdash A
+                                    A\Rightarrow B, \ngr B,A \vdash A
                                 }{
                                 }
                             }
@@ -84,14 +84,14 @@
         \item
             $$
                 \infer{
-                                        (\Pi_0) : A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B
+                                        (\Pi_0) : A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash B
                                     }{
                                         \infer{
-                                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash A\Rightarrow B
+                                            A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash A\Rightarrow B
                                         }{
                                         }&
                                         \infer{
-                                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash A
+                                            A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash A
                                         }{
                                         }
                                     }
@@ -101,17 +101,17 @@
             
             $$
                 \infer{
-                                (\Pi_1) : A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R
+                                (\Pi_1) : A\Rightarrow B, \ngr\ngr A,\ngr B \vdash A\Rightarrow \R
                             }{
                                 \infer{
-                                    A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash \R
+                                    A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash \R
                                 }{
                                     \infer{
-                                        A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B \Rightarrow \R
+                                        A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash B \Rightarrow \R
                                     }{
                                     }&
                                     \infer{
-                                        A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B, A\vdash B
+                                        A\Rightarrow B, \ngr\ngr A,\ngr B, A\vdash B
                                     }{
                                         \Pi_0
                                     }
@@ -123,20 +123,20 @@
             
             $$
                 \infer{
-                    A\Rightarrow B \vdash \neg_\R\neg_\R A \Rightarrow \neg_\R \neg_\R B
+                    A\Rightarrow B \vdash \ngr\ngr A \Rightarrow \ngr \ngr B
                 }{
                     \infer{
-                        A\Rightarrow B, \neg_\R\neg_\R A \vdash \neg_\R \neg_\R B
+                        A\Rightarrow B, \ngr\ngr A \vdash \ngr \ngr B
                     }{
                         \infer{
-                            A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash \R 
+                            A\Rightarrow B, \ngr\ngr A,\ngr B \vdash \R 
                         }{
                             \infer{
-                                A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R \Rightarrow \R 
+                                A\Rightarrow B, \ngr\ngr A,\ngr B \vdash A\Rightarrow \R \Rightarrow \R 
                             }{
                             }&
                             \infer{
-                                A\Rightarrow B, \neg_\R\neg_\R A,\neg_\R B \vdash A\Rightarrow \R
+                                A\Rightarrow B, \ngr\ngr A,\ngr B \vdash A\Rightarrow \R
                             }{
                                 \Pi_1
                             }
@@ -147,14 +147,14 @@
         \item
             $$
                             \infer{
-                                (\Pi_2) : \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash \R
+                                (\Pi_2) : \ngr \ngr \ngr A, A, A\Rightarrow\R \vdash \R
                             }{
                                 \infer{
-                                    \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash A\Rightarrow\R
+                                    \ngr \ngr \ngr A, A, A\Rightarrow\R \vdash A\Rightarrow\R
                                 }{
                                 }&
                                 \infer{
-                                    \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash A
+                                    \ngr \ngr \ngr A, A, A\Rightarrow\R \vdash A
                                 }{
                                 }
                             }
@@ -162,20 +162,20 @@
         
             $$
                 \infer{
-                    \neg_\R \neg_\R \neg_\R A \vdash \neg_\R A
+                    \ngr \ngr \ngr A \vdash \ngr A
                 }{
                     \infer{
-                        \neg_\R \neg_\R \neg_\R A, A \vdash \R
+                        \ngr \ngr \ngr A, A \vdash \R
                     }{
                         \infer{
-                            \neg_\R \neg_\R \neg_\R A, A \vdash A\Rightarrow\R\Rightarrow\R\Rightarrow\R
+                            \ngr \ngr \ngr A, A \vdash A\Rightarrow\R\Rightarrow\R\Rightarrow\R
                         }{
                         }&
                         \infer{
-                            \neg_\R \neg_\R \neg_\R A, A \vdash A\Rightarrow\R\Rightarrow\R
+                            \ngr \ngr \ngr A, A \vdash A\Rightarrow\R\Rightarrow\R
                         }{
                             \infer{
-                                \neg_\R \neg_\R \neg_\R A, A, A\Rightarrow\R \vdash \R
+                                \ngr \ngr \ngr A, A, A\Rightarrow\R \vdash \R
                             }{
                                 \Pi_2
                             }
