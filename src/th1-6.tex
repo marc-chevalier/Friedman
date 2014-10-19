@@ -2,10 +2,10 @@
     \item Injectivity of $S$
     $$    
                                 \infer{
-                                    (\Xi_1) : \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash x\dot{=}y
+                                    (\Xi_1) : \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y, S(x)\dot{=}S(y)  \vdash x\dot{=}y
                                 }{
                                     \infer{
-                                        \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash S(x)\dot{=}S(y) 
+                                        \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y, S(x)\dot{=}S(y)  \vdash S(x)\dot{=}S(y) 
                                     }{
                                     }&
                                     \infer{
@@ -18,13 +18,13 @@
     
     $$
     \infer{
-                            (\Xi_2) : \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y \vdash \neg_\R S(x)\dot{=}S(y) 
+                            (\Xi_2) : \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y \vdash \ngr S(x)\dot{=}S(y) 
                         }{
                             \infer{
-                                \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash\R 
+                                \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y, S(x)\dot{=}S(y)  \vdash\R 
                             }{
                                 \infer{
-                                    \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash\neg_\R x\dot{=}y
+                                    \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y, S(x)\dot{=}S(y)  \vdash\ngr x\dot{=}y
                                 }{
                                 }&
                                 \Xi_1
@@ -34,22 +34,22 @@
     
     $$
     \infer{
-        \vdash (\forall xy (S(x)\dot{=}S(y) \Rightarrow x\dot{=}y))^{\neg_\R}
+        \vdash (\forall xy (S(x)\dot{=}S(y) \Rightarrow x\dot{=}y))^\ngr
     }{
         \infer{
-            \vdash \forall xy (\neg_\R\neg_\R S(x)\dot{=}S(y) \Rightarrow \neg_\R\neg_\R x\dot{=}y)
+            \vdash \forall xy (\ngr\ngr S(x)\dot{=}S(y) \Rightarrow \ngr\ngr x\dot{=}y)
         }{
             \infer{
-                \vdash \neg_\R\neg_\R S(x)\dot{=}S(y) \Rightarrow \neg_\R\neg_\R x\dot{=}y
+                \vdash \ngr\ngr S(x)\dot{=}S(y) \Rightarrow \ngr\ngr x\dot{=}y
             }{
                 \infer{
-                    \neg_\R\neg_\R S(x)\dot{=}S(y) \vdash\neg_\R\neg_\R x\dot{=}y
+                    \ngr\ngr S(x)\dot{=}S(y) \vdash\ngr\ngr x\dot{=}y
                 }{
                     \infer{
-                        \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y \vdash \R 
+                        \ngr\ngr S(x)\dot{=}S(y), \ngr x\dot{=}y \vdash \R 
                     }{
                         \infer{
-                            \neg_\R\neg_\R S(x)\dot{=}S(y) \vdash \neg_\R\neg_\R S(x)\dot{=}S(y) 
+                            \ngr\ngr S(x)\dot{=}S(y) \vdash \ngr\ngr S(x)\dot{=}S(y) 
                         }{
                         }&
                         \Xi_2
@@ -64,32 +64,32 @@
     
     $$
     \infer{
-        \vdash (\forall x \neg S(x)\dot{=}0)^{\neg_\R}
+        \vdash (\forall x \neg S(x)\dot{=}0)^\ngr
     }{
         \infer{
-            \vdash \forall x \neg_\R\neg_\R\neg_\R S(x)\dot{=}0
+            \vdash \forall x \ngr\ngr\ngr S(x)\dot{=}0
         }{
             \infer{
-                \vdash \neg_\R\neg_\R\neg_\R S(x)\dot{=}0
+                \vdash \ngr\ngr\ngr S(x)\dot{=}0
             }{
                 \infer{
-                    \neg_\R\neg_\R S(x)\dot{=}0 \vdash \R
+                    \ngr\ngr S(x)\dot{=}0 \vdash \R
                 }{
                    \infer{
-                        \neg_\R\neg_\R S(x)\dot{=}0 \vdash \neg_\R\neg_\R S(x)\dot{=}0
+                        \ngr\ngr S(x)\dot{=}0 \vdash \ngr\ngr S(x)\dot{=}0
                     }{
                     }&
                    \infer{
-                        \neg_\R\neg_\R S(x)\dot{=}0 \vdash \neg_\R S(x)\dot{=}0
+                        \ngr\ngr S(x)\dot{=}0 \vdash \ngr S(x)\dot{=}0
                     }{
                         \infer{
-                           \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash \R 
+                           \ngr\ngr S(x)\dot{=}0, S(x)\dot{=}0\vdash \R 
                         }{
                             \infer{
-                                \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash \bottom 
+                                \ngr\ngr S(x)\dot{=}0, S(x)\dot{=}0\vdash \bottom 
                             }{
                                 \infer{
-                                    \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash S(x)\dot{=}0\ 
+                                    \ngr\ngr S(x)\dot{=}0, S(x)\dot{=}0\vdash S(x)\dot{=}0\ 
                                 }{   
                                 }&
                                 \infer{
@@ -113,14 +113,14 @@
     
     $$
     \infer{
-        (\Xi_3) : A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow A^{\neg_\R}
+        (\Xi_3) : A[0/x]^\ngr, \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \vdash \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \Rightarrow A^\ngr
     }{
         \infer{
-            \vdash A[0/x]^{\neg_\R} \Rightarrow \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow A^{\neg_\R}
+            \vdash A[0/x]^\ngr \Rightarrow \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \Rightarrow A^\ngr
         }{
         }&
         \infer{
-            A[0/x]^{\neg_\R} \vdash A[0/x]^{\neg_\R}
+            A[0/x]^\ngr \vdash A[0/x]^\ngr
         }{
         }
     }
@@ -128,24 +128,24 @@
     
     $$
     \infer{
-        \vdash (A[0/x] \Rightarrow \forall y(A[y/x] \Rightarrow A[S(y)/x]) \Rightarrow \forall x A)^{\neg_\R}
+        \vdash (A[0/x] \Rightarrow \forall y(A[y/x] \Rightarrow A[S(y)/x]) \Rightarrow \forall x A)^\ngr
     }{
         \infer{
-            \vdash A[0/x]^{\neg_\R} \Rightarrow \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow \forall x A^{\neg_\R}
+            \vdash A[0/x]^\ngr \Rightarrow \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \Rightarrow \forall x A^\ngr
         }{
             \infer{
-                A[0/x]^{\neg_\R} \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow \forall x A^{\neg_\R}
+                A[0/x]^\ngr \vdash \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \Rightarrow \forall x A^\ngr
             }{
                 \infer{
-                    A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall x A^{\neg_\R}
+                    A[0/x]^\ngr, \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \vdash \forall x A^\ngr
                 }{
                     \infer{
-                        A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash A^{\neg_\R}
+                        A[0/x]^\ngr, \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \vdash A^\ngr
                     }{
                         \Xi_3
                         &
                         \infer{
-                            \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R})
+                            \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr) \vdash \forall y(A[y/x]^\ngr \Rightarrow A[S(y)/x]^\ngr)
                         }{
                         }
                     }
