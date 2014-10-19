@@ -1,0 +1,157 @@
+\begin{enumerate}
+    \item Injectivity of $S$
+    $$    
+                                \infer{
+                                    (\Xi_1) : \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash x\dot{=}y
+                                }{
+                                    \infer{
+                                        \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash S(x)\dot{=}S(y) 
+                                    }{
+                                    }&
+                                    \infer{
+                                        \vdash S(x)\dot{=}S(y) \Rightarrow x\dot{=}y
+                                    }{
+                                    }
+                                }
+    $$
+    
+    
+    $$
+    \infer{
+                            (\Xi_2) : \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y \vdash \neg_\R S(x)\dot{=}S(y) 
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash\R 
+                            }{
+                                \infer{
+                                    \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y, S(x)\dot{=}S(y)  \vdash\neg_\R x\dot{=}y
+                                }{
+                                }&
+                                \Xi_1
+                            }
+                        }
+    $$    
+    
+    $$
+    \infer{
+        \vdash (\forall xy (S(x)\dot{=}S(y) \Rightarrow x\dot{=}y))^{\neg_\R}
+    }{
+        \infer{
+            \vdash \forall xy (\neg_\R\neg_\R S(x)\dot{=}S(y) \Rightarrow \neg_\R\neg_\R x\dot{=}y)
+        }{
+            \infer{
+                \vdash \neg_\R\neg_\R S(x)\dot{=}S(y) \Rightarrow \neg_\R\neg_\R x\dot{=}y
+            }{
+                \infer{
+                    \neg_\R\neg_\R S(x)\dot{=}S(y) \vdash\neg_\R\neg_\R x\dot{=}y
+                }{
+                    \infer{
+                        \neg_\R\neg_\R S(x)\dot{=}S(y), \neg_\R x\dot{=}y \vdash \R 
+                    }{
+                        \infer{
+                            \neg_\R\neg_\R S(x)\dot{=}S(y) \vdash \neg_\R\neg_\R S(x)\dot{=}S(y) 
+                        }{
+                        }&
+                        \Xi_2
+                    }
+                }
+            }
+        }
+    }
+    $$
+    
+    \item Non confusion
+    
+    $$
+    \infer{
+        \vdash (\forall x \neg S(x)\dot{=}0)^{\neg_\R}
+    }{
+        \infer{
+            \vdash \forall x \neg_\R\neg_\R\neg_\R S(x)\dot{=}0
+        }{
+            \infer{
+                \vdash \neg_\R\neg_\R\neg_\R S(x)\dot{=}0
+            }{
+                \infer{
+                    \neg_\R\neg_\R S(x)\dot{=}0 \vdash \R
+                }{
+                   \infer{
+                        \neg_\R\neg_\R S(x)\dot{=}0 \vdash \neg_\R\neg_\R S(x)\dot{=}0
+                    }{
+                    }&
+                   \infer{
+                        \neg_\R\neg_\R S(x)\dot{=}0 \vdash \neg_\R S(x)\dot{=}0
+                    }{
+                        \infer{
+                           \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash \R 
+                        }{
+                            \infer{
+                                \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash \bottom 
+                            }{
+                                \infer{
+                                    \neg_\R\neg_\R S(x)\dot{=}0, S(x)\dot{=}0\vdash S(x)\dot{=}0\ 
+                                }{   
+                                }&
+                                \infer{
+                                    \vdash \neg S(x)\dot{=}0\ 
+                                }{
+                                    \infer{
+                                        \vdash \neg \forall xS(x)\dot{=}0\ 
+                                    }{
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    $$
+    
+    \item Induction Scheme
+    
+    $$
+    \infer{
+        (\Xi_3) : A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow A^{\neg_\R}
+    }{
+        \infer{
+            \vdash A[0/x]^{\neg_\R} \Rightarrow \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow A^{\neg_\R}
+        }{
+        }&
+        \infer{
+            A[0/x]^{\neg_\R} \vdash A[0/x]^{\neg_\R}
+        }{
+        }
+    }
+    $$
+    
+    $$
+    \infer{
+        \vdash (A[0/x] \Rightarrow \forall y(A[y/x] \Rightarrow A[S(y)/x]) \Rightarrow \forall x A)^{\neg_\R}
+    }{
+        \infer{
+            \vdash A[0/x]^{\neg_\R} \Rightarrow \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow \forall x A^{\neg_\R}
+        }{
+            \infer{
+                A[0/x]^{\neg_\R} \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \Rightarrow \forall x A^{\neg_\R}
+            }{
+                \infer{
+                    A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall x A^{\neg_\R}
+                }{
+                    \infer{
+                        A[0/x]^{\neg_\R}, \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash A^{\neg_\R}
+                    }{
+                        \Xi_3
+                        &
+                        \infer{
+                            \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R}) \vdash \forall y(A[y/x]^{\neg_\R} \Rightarrow A[S(y)/x]^{\neg_\R})
+                        }{
+                        }
+                    }
+                }
+            }
+        }
+    }
+    $$
+\end{enumerate}
