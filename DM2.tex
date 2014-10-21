@@ -66,7 +66,50 @@ Note that $(\neg A)^\ngr = \ngr A^\ngr$. We gather here the basic properties of 
     If $\vdash A$ is derivable in classical predicate logic and if no free variable of \R\, occurs in the derivation, then $\vdash A^{\neg_\R}$ is derivable in intuitionisctic predicate logic.
 \end{theoreme}
 \begin{proof}
+    Every rules except excluded middle are the same so we just keep them  (and we replace all expression $X$ to $X^\ngr$) in order to get a derivation of $\vdash A^{\neg_\R}$ from a derivation of $\vdash A$. It works because there is no free occurrences of $R$.
 
+For the excluded middle rule we rewrite:
+    $$
+    \infer{
+        \Gamma \vdash A
+    }{
+        \infer{
+            \Gamma, \neg A \vdash \bottom
+        }{
+            \vdots
+        }
+    }
+    $$
+to:
+    $$
+    \infer{
+        \Gamma \vdash A^\ngr 
+    }{
+        \infer{
+            \Gamma \vdash (A \wedge \neg A)^\ngr
+        }{
+            \infer{
+                \vdash (A \wedge \neg A)^\ngr
+            }{
+                \text{proposition 4 \textit{(i)}}
+            }
+        }
+        &
+        \infer{
+            \Gamma, A^\ngr \vdash A^\ngr 
+        }{}
+        &
+        \infer{
+            \Gamma, \ngr A^\ngr \vdash A^\ngr 
+        }{
+            \infer{
+                \Gamma, \ngr A^\ngr \vdash \bottom
+            }{
+                \vdots
+            }
+        }
+    }
+    $$
 \end{proof}
 
 \begin{theoreme}
