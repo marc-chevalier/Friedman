@@ -24,24 +24,7 @@
     }
     $$
     
-    $$
-    \infer{
-        (\Psi_2) : A \vdash \ngr \ngr A
-    }{
-        \infer{
-            A, \ngr A \vdash \R
-        }{
-            \infer{
-                A, \ngr A \vdash A\Rightarrow \R
-            }{
-            }&
-            \infer{
-                A, \ngr A \vdash A
-            }{
-            }
-        }
-    }
-    $$
+    $(\Psi_2) : A \vdash \ngr \ngr A$ (proposition 2 \textit{(ii)})
     
     $$
     \infer{
@@ -63,7 +46,7 @@
     }
     $$
     
-    We will often use this last one with the weakening
+    We will often use this last one with the weakening.
     
     \begin{itemize}
         \item $A = \top$.
@@ -266,6 +249,9 @@
 
             $$
             \infer{
+                \vdash ((B \vee C) \vee (\ngr (B \vee C))^\ngr
+            }{
+            \infer{
                 \vdash (B \vee C)^\ngr \vee (\ngr (B \vee C)^\ngr)
             }{
                 \infer{
@@ -301,6 +287,7 @@
                     }&
                     \Pi_9
                 }
+            }
             }
             $$
 
@@ -388,13 +375,13 @@
                     }
                     &
                     \infer{
-                        \neg B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
+                        \ngr B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
                     }{
                         \infer{
-                            \neg B^\ngr \vdash \ngr(B^\ngr \wedge C^\ngr)
+                            \ngr B^\ngr \vdash \ngr(B^\ngr \wedge C^\ngr)
                         }{
                             \infer{
-                                \neg B^\ngr, B^\ngr \wedge C^\ngr \vdash \R
+                                \ngr B^\ngr, B^\ngr \wedge C^\ngr \vdash \R
                             }{
                                 \infer{
                                     B^\ngr \wedge C^\ngr \vdash B^\ngr
@@ -416,7 +403,284 @@
             
             $(IH_C) : \; \vdash (C \vee \neg C)^\ngr$
             
+            We use here the property \textit{(ii)} $\R \vdash A^\ngr$. It is possible to do so because the proof of \textit{(ii)} does not relies on the proof of \textit{(i)}.
+            
             $$
+            \infer{
+                 (Pi_8): \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr
+            }{
+                 \infer{
+                     \ngr B^\ngr, \ngr C^\ngr \vdash B^\ngr \Rightarrow C^\ngr
+                }{
+                    \infer{
+                        \ngr B^\ngr, \ngr C^\ngr, B^\ngr \vdash C^\ngr
+                    }{
+                        \infer{
+                            (ii): \ngr B^\ngr, \ngr C^\ngr, B^\ngr \vdash R
+                        }{
+                            \infer{
+                                \ngr B^\ngr, \ngr C^\ngr, B^\ngr \vdash B^\ngr
+                            }{
+                            }
+                            &
+                            \infer{
+                                \ngr B^\ngr, \ngr C^\ngr, B^\ngr \vdash \ngr B^\ngr
+                            }{
+                            }
+                        }
+                    }
+                }
+            }
+            $$
+            
+            $$
+            \infer{
+                 (\Pi_7): B^\ngr, \ngr C^\ngr \vdash \ngr (B \Rightarrow C)^\ngr
+                }{
+                    \infer{
+                        B^\ngr, \ngr C^\ngr \vdash \ngr (B^\ngr \Rightarrow C^\ngr)
+                    }{
+                        \infer{
+                            B^\ngr, \ngr C^\ngr, B^\ngr \Rightarrow C^\ngr \vdash R
+                        }{
+                            \infer{
+                                B^\ngr, \ngr C^\ngr, B^\ngr \Rightarrow C^\ngr \vdash C^\ngr
+                            }{
+                                \infer{
+                                    B^\ngr, \ngr C^\ngr, B^\ngr \Rightarrow C^\ngr \vdash B^\ngr
+                                }{
+                                }
+                                &
+                                \infer{
+                                    B^\ngr \Rightarrow C^\ngr \vdash  B^\ngr \Rightarrow C^\ngr
+                                }{
+                                }
+                            }
+                            &
+                            \infer{
+                                \ngr C^\ngr \vdash \ngr C^\ngr
+                            }{
+                            }
+                        }
+                    }
+                }
+            $$
+            
+            $$
+            \infer{
+                (\Pi_6) : \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+            }{
+                \infer{
+                    \vdash B^\ngr \vee \ngr B^\ngr
+                }{
+                    \infer{
+                        \vdash (B \vee \neg B)^\ngr
+                    }{
+                        IH_B
+                    }
+                }
+                &
+                \infer{
+                    B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                }{
+                    \Pi_7
+                }
+                &
+                \infer{
+                    \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                }{
+                    \Pi_8
+                }
+            }  
+            $$
+            
+            $$
+            \infer{
+                    \vdash ((B \Rightarrow C) \vee \neg (B \Rightarrow C))^\ngr
+            }{
+                \infer{
+                    \vdash \ngr\ngr ((B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr)
+                }{
+                    \infer{
+                        \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                    }{
+                        \infer{
+                            \vdash C^\ngr \vee \ngr C^\ngr
+                        }{
+                            \infer{
+                                \vdash (C \vee \neg C)^\ngr
+                            }{
+                                IH_C
+                            }
+                        }
+                        &
+                        \infer{
+                            C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                        }{
+                            \infer{
+                                C^\ngr \vdash (B \Rightarrow C)^\ngr
+                            }{
+                                \infer{
+                                    C^\ngr \vdash B^\ngr \Rightarrow C^\ngr
+                                }{
+                                    \infer{
+                                        C^\ngr, B^\ngr \vdash C^\ngr
+                                    }{
+                                    }
+                                }
+                            }
+                        }
+                        &
+                        \infer{
+                            \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                        }{
+                            \Pi_6
+                        }
+                    }
+                }
+            }
+            $$
+
+        \item $A=\forall x B$
+        
+            $IH_B : \; \vdash (B \vee \neg B)^\ngr$
+           
+            $$
+                \infer{
+                    \vdash ((\forall x B) \vee \neg (\forall x B))^\ngr
+                }{
+                    \infer{
+                        \vdash \ngr\ngr((\forall x B)^\ngr \vee \ngr (\forall x B)^\ngr)
+                    }{
+                        \infer{
+                            \vdash (\forall x B)^\ngr \vee \ngr (\forall x B)^\ngr
+                        }{
+                            \infer {
+                                \vdash B^\ngr \vee \ngr B^\ngr
+                            }{
+                                \infer {
+                                    \vdash (B \vee \ngr B)^\ngr
+                                }{
+                                    IH_B
+                                }
+                            }
+                            &
+                            \infer {
+                                B^\ngr \vdash (\forall x B)^\ngr \vee \ngr (\forall x B)^\ngr
+                            }{
+                                \infer {
+                                    B^\ngr \vdash \forall x B^\ngr
+                                }{
+                                    \infer {
+                                        B^\ngr \vdash B^\ngr
+                                    }{
+                                    }
+                                }
+                            }
+                            &
+                            \infer {
+                                \ngr B^\ngr \vdash (\forall x B)^\ngr \vee \ngr (\forall x B)^\ngr
+                            }{
+                                \infer {
+                                    \ngr B^\ngr \vdash \ngr(\forall x B^\ngr)
+                                 }{
+                                     \infer {
+                                        \ngr B^\ngr, \forall x B^\ngr \vdash R
+                                    }{
+                                        \infer {
+                                            \forall x B^\ngr \vdash B^\ngr
+                                        }{
+                                        }
+                                        &
+                                        \infer {
+                                           \ngr B^\ngr \vdash \ngr B^\ngr
+                                        }{
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            $$
+        \item $A=\exists x B$
+        
+            $IH_B : \; \vdash (B \vee \neg B)^\ngr$
+        
+            $$
+                \infer{
+                    \vdash ((\exists x B) \vee \neg (\exists x B)^\ngr
+                }{
+                    \infer {
+                        \vdash \ngr\ngr((\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr))
+                    }{
+                        \infer {
+                            \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+                        }{
+                            \infer {
+                                \vdash B^\ngr \vee \ngr B^\ngr
+                            }{
+                                \infer {
+                                    \vdash (B \vee \ngr B)^\ngr
+                                }{
+                                    IH_B
+                                }
+                            }
+                            &
+                            \infer {
+                                B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+                            }{
+                                \infer {
+                                    B^\ngr \vdash \ngr\ngr (\exists x B^\ngr)
+                                }{
+                                   \infer {
+                                       B^\ngr \vdash \exists x B^\ngr
+                                    }{
+                                        \infer {
+                                           B^\ngr \vdash B^\ngr
+                                        }{
+                                        }
+                                    }
+                                }
+                            }
+                            &
+                            \infer {
+                                \ngr B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+                            }{
+                                \infer {
+                                    \ngr B^\ngr \vdash \ngr\ngr\ngr(\exists x B^\ngr)
+                                }{
+                                   \infer {
+                                       \ngr B^\ngr \vdash \ngr \exists x B^\ngr
+                                    }{
+                                        \infer {
+                                           \ngr B^\ngr, \exists x B^\ngr \vdash R
+                                        }{
+                                            \infer {
+                                               \exists x B^\ngr \vdash \exists x B^\ngr
+                                            }{
+                                            }
+                                            &
+                                            \infer {
+                                               \ngr B^\ngr, B^\ngr \vdash R
+                                            }{
+                                                \infer {
+                                                   B^\ngr \vdash B^\ngr
+                                                }{
+                                                }
+                                                &
+                                                \infer {
+                                                   \ngr B^\ngr, \vdash \ngr B^\ngr
+                                                }{
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             $$
     \end{itemize}
 
@@ -551,36 +815,13 @@
             $$
         \item $A=(a \dot{=} b)$
             $$
-            \infer{
-                                (\Theta_1) : \ngr \ngr (a \dot{=} b)^\ngr, \ngr(a \dot{=} b), \ngr \ngr (a \dot{=} b) \vdash \R
-                            }{
-                                \infer{
-                                    \ngr \ngr (a \dot{=} b)^\ngr, \ngr(a \dot{=} b), \ngr \ngr (a \dot{=} b) \vdash \ngr \ngr (a \dot{=} b)
-                                }{
-                                }&
-                                \infer{
-                                    \ngr(a \dot{=} b), \ngr \ngr (a \dot{=} b) \vdash \ngr (a \dot{=} b)
-                                }{
-                                }
-                            }
-            $$
-            
-            $$
                 \infer{
-                    \ngr \ngr (a \dot{=} b)^\ngr \vdash (a \dot{=} b)^\ngr
+                    \ngr\ngr(a \dot{=} b)^\ngr \vdash (a \dot{=} b)^\ngr
                 }{
                     \infer{
-                        \ngr \ngr (a \dot{=} b)^\ngr, \ngr(a \dot{=} b) \vdash \R
+                        \ngr\ngr\ngr(\ngr(a \dot{=} b)) \vdash \ngr(\ngr(a \dot{=} b))
                     }{
-                        \infer{
-                            \ngr \ngr (a \dot{=} b)^\ngr, \ngr(a \dot{=} b) \vdash \ngr \ngr \ngr \ngr (a \dot{=} b)
-                        }{
-                        }&
-                        \infer{
-                            \ngr \ngr (a \dot{=} b)^\ngr, \ngr(a \dot{=} b) \vdash \ngr \ngr \ngr (a \dot{=} b)
-                        }{
-                            \Theta_1
-                        }
+                        \text{Proposition 2 \textit{(v)}}
                     }
                 }
             $$
@@ -730,57 +971,14 @@
                 }
             $$
         \item $A=B \vee C$
-            $$            
-                    \infer{
-                        (\Theta_8) : \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr), (B \vee C)^\ngr \vdash \ngr(B^\ngr \vee C^\ngr)
-                    }{
-                        \infer{
-                            \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr), (B \vee C)^\ngr, B^\ngr \vee C^\ngr \vdash \R
-                        }{
-                            \infer{
-                                \ngr(B^\ngr \vee C^\ngr) \vdash \ngr(B^\ngr \vee C^\ngr)
-                            }{
-                            }&
-                            \infer{
-                                B^\ngr \vee C^\ngr \vdash B^\ngr \vee C^\ngr
-                            }{
-                            }
-                        }
-                    }
-            $$
-            
-            $$
-            \infer{
-                (\Theta_9) : \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr) \vdash \ngr(B \vee C)^\ngr
-            }{
-                \infer{
-                    \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr), (B \vee C)^\ngr \vdash \R
-                }{
-                    \infer{
-                        \ngr\ngr(B^\ngr \vee C^\ngr) \vdash \ngr\ngr(B^\ngr \vee C^\ngr)
-                    }{
-                    }&
-                    \Theta_8
-                }
-            }
-            $$
-        
             $$
                 \infer{
                     \ngr\ngr(B \vee C)^\ngr \vdash (B \vee C)^\ngr
                 }{
                     \infer{
-                        \ngr\ngr(B \vee C)^\ngr \vdash \ngr\ngr(B^\ngr \vee C^\ngr)
+                        \ngr\ngr\ngr(\ngr(B^\ngr \vee C^\ngr)) \vdash \ngr(\ngr(B^\ngr \vee C^\ngr))
                     }{
-                        \infer{
-                            \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr) \vdash \R
-                        }{
-                            \infer{
-                                \ngr\ngr(B \vee C)^\ngr, \ngr(B^\ngr \vee C^\ngr) \vdash \ngr\ngr(B \vee C)^\ngr
-                            }{
-                            }&
-                            \Theta_9
-                        }
+                        \text{Proposition 2 \textit{(v)}}
                     }
                 }
             $$
@@ -797,48 +995,14 @@
                 }
             $$
         \item $A=\exists x B$
-            $$\infer{
-                            (\Theta_{10}) : \ngr\ngr(\exists x B)^\ngr, \ngr(\exists x B^\ngr) \vdash \ngr(\exists x B)^\ngr
-                        }{
-                            \infer{
-                                \ngr\ngr(\exists x B)^\ngr, \ngr(\exists x B^\ngr), (\exists x B)^\ngr \vdash \R
-                            }{
-                                \infer{
-                                    (\exists x B)^\ngr \vdash \ngr\ngr\exists x B^\ngr
-                                }{
-                                }&
-                                \infer{
-                                    \ngr(\exists x B^\ngr), (\exists x B)^\ngr \vdash \ngr\exists x B^\ngr
-                                }{
-                                    \infer{
-                                        \ngr(\exists x B^\ngr), (\exists x B)^\ngr, \exists x B^\ngr \vdash \R
-                                    }{
-                                        \infer{
-                                            \ngr(\exists x B^\ngr) \vdash \ngr(\exists x B^\ngr)
-                                        }{
-                                        }&
-                                        \infer{
-                                            \exists x B^\ngr \vdash \exists x B^\ngr
-                                        }{
-                                        }
-                                    }
-                                }
-                            }
-                        }
-            $$
-        
             $$
                 \infer{
-                    \ngr\ngr(\exists x B)^\ngr \vdash \ngr\ngr(\exists x B^\ngr)
+                    \ngr\ngr(\exists x B)^\ngr \vdash (\exists x B)^\ngr
                 }{
                     \infer{
-                        \ngr\ngr(\exists x B)^\ngr, \ngr(\exists x B^\ngr) \vdash \R
+                        \ngr\ngr\ngr(\ngr(\exists x B^\ngr)) \vdash \ngr(\ngr(\exists x B^\ngr))
                     }{
-                        \infer{
-                            \ngr\ngr(\exists x B)^\ngr \vdash \ngr\ngr(\exists x B)^\ngr
-                        }{
-                        }&
-                        \Theta_{10}
+                        \text{Proposition 2 \textit{(v)}}
                     }
                 }
             $$
