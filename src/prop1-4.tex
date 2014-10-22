@@ -324,7 +324,7 @@
 
             $$
             \infer{
-                \Pi_5 : B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
+                (\Pi_5) : B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
             }{
                 \infer{
                     \vdash (C^\ngr \vee \ngr C^\ngr)
@@ -354,28 +354,10 @@
                 \Pi_4
             }
             $$
-
+            
             $$
-            \infer{
-                \vdash ((B \wedge C) \vee \neg(B \wedge C))^\ngr
-            }{\infer{\Psi_3}{
-                    \infer{\vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
-                }{
-                        \infer{\vdash B^\ngr \vee \ngr B^\ngr
-                    }{
-                            \infer{\vdash (B \vee \neg B)^\ngr
-                        }{
-                            IH_B
-                        }
-                    }
-                    &
-                        \infer{B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
-                    }{
-                        \Pi_5
-                    }
-                    &
                     \infer{
-                        \ngr B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
+                        (\Pi'_5) : \ngr B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
                     }{
                         \infer{
                             \ngr B^\ngr \vdash \ngr(B^\ngr \wedge C^\ngr)
@@ -394,6 +376,27 @@
                             }
                         }
                     }
+            $$
+
+            $$
+            \infer{
+                \vdash ((B \wedge C) \vee \neg(B \wedge C))^\ngr
+            }{\infer{\Psi_3}{
+                    \infer{\vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
+                }{
+                        \infer{\vdash B^\ngr \vee \ngr B^\ngr
+                    }{
+                            \infer{\vdash (B \vee \neg B)^\ngr
+                        }{
+                            IH_B
+                        }
+                    }&
+                    \infer{
+                        B^\ngr \vdash (B^\ngr \wedge C^\ngr) \vee \ngr(B^\ngr \wedge C^\ngr)
+                    }{
+                        \Pi_5
+                    }&
+                    \Pi'_5
                 }
             }}
             $$
@@ -407,7 +410,7 @@
             
             $$
             \infer{
-                 (Pi_8): \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr
+                 (\Pi_8): \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr
             }{
                  \infer{
                      \ngr B^\ngr, \ngr C^\ngr \vdash B^\ngr \Rightarrow C^\ngr
@@ -466,6 +469,14 @@
                 }
             $$
             
+            $$            
+                \infer{
+                    (\Pi'_8) : \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
+                }{
+                    \Pi_8
+                }
+            $$
+            
             $$
             \infer{
                 (\Pi_6) : \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
@@ -478,19 +489,13 @@
                     }{
                         IH_B
                     }
-                }
-                &
+                }&
                 \infer{
                     B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
                 }{
                     \Pi_7
-                }
-                &
-                \infer{
-                    \ngr B^\ngr, \ngr C^\ngr \vdash (B \Rightarrow C)^\ngr \vee \ngr (B \Rightarrow C)^\ngr
-                }{
-                    \Pi_8
-                }
+                }&
+                \Pi'_8
             }  
             $$
             
@@ -606,46 +611,10 @@
         \item $A=\exists x B$
         
             $IH_B : \; \vdash (B \vee \neg B)^\ngr$
-        
+            
             $$
-                \infer{
-                    \vdash ((\exists x B) \vee \neg (\exists x B)^\ngr
-                }{
-                    \infer {
-                        \vdash \ngr\ngr((\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr))
-                    }{
-                        \infer {
-                            \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
-                        }{
-                            \infer {
-                                \vdash B^\ngr \vee \ngr B^\ngr
-                            }{
-                                \infer {
-                                    \vdash (B \vee \ngr B)^\ngr
-                                }{
-                                    IH_B
-                                }
-                            }
-                            &
-                            \infer {
-                                B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
-                            }{
-                                \infer {
-                                    B^\ngr \vdash \ngr\ngr (\exists x B^\ngr)
-                                }{
-                                   \infer {
-                                       B^\ngr \vdash \exists x B^\ngr
-                                    }{
-                                        \infer {
-                                           B^\ngr \vdash B^\ngr
-                                        }{
-                                        }
-                                    }
-                                }
-                            }
-                            &
-                            \infer {
-                                \ngr B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+            \infer {
+                                (\Pi_{10}) : \ngr B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
                             }{
                                 \infer {
                                     \ngr B^\ngr \vdash \ngr\ngr\ngr(\exists x B^\ngr)
@@ -678,6 +647,44 @@
                                     }
                                 }
                             }
+            $$
+        
+            $$
+                \infer{
+                    \vdash ((\exists x B) \vee \neg (\exists x B)^\ngr
+                }{
+                    \infer {
+                        \vdash \ngr\ngr((\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr))
+                    }{
+                        \infer {
+                            \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+                        }{
+                            \infer {
+                                \vdash B^\ngr \vee \ngr B^\ngr
+                            }{
+                                \infer {
+                                    \vdash (B \vee \ngr B)^\ngr
+                                }{
+                                    IH_B
+                                }
+                            }&
+                            \infer {
+                                B^\ngr \vdash (\exists x B)^\ngr \vee \ngr (\exists x B)^\ngr)
+                            }{
+                                \infer {
+                                    B^\ngr \vdash \ngr\ngr (\exists x B^\ngr)
+                                }{
+                                   \infer {
+                                       B^\ngr \vdash \exists x B^\ngr
+                                    }{
+                                        \infer {
+                                           B^\ngr \vdash B^\ngr
+                                        }{
+                                        }
+                                    }
+                                }
+                            }&
+                            \Pi_{10}
                         }
                     }
                 }
